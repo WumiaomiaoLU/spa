@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">  
+  <title></title>
+</head>
+<title>矩形周长面积计算</title>
+<style>
+ #rectangle__calc{
+   margin-left:53px;
+ }
+</style>
+
+<body>
+ <div class="rectangle">
+   <label for="">宽度：</label>   
+   <input id="rectangle__width" type="textbox">
+   <br>
+   <label for="">长度：</label>
+   <input id="rectangle__height" type="textbox">
+   <br>
+   <input id="rectangle__calc" type="button" value="计算">
+   <br>
+   <label for="">周长：</label>
+   <input id="rectangle__perimeter" type="textbox">
+   <br>
+   <label for="">面积：</label>
+   <input id="rectangle__area" type="textbox">
+ </div>  
+</body>
+<script>
+  var width=document.getElementById('rectangle__width');
+  var height=document.getElementById('rectangle__height');
+  var down=document.getElementById('rectangle__calc');
+  var perimter=document.getElementById('rectangle__perimeter');
+  var area=document.getElementById('rectangle__area');
+  down.onclick=function(){
+    if(width.value&&height.value){
+    perimter.value=width.value*2+height.value*2;
+    area.value=width.value*height.value;
+    }
+    else{alert('请输入正确的值！');}
+  }
+</script>
+</html>
