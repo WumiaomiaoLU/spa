@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		定时器按钮
+	</title>
+	<style>
+    #di{
+    	text-align: center;
+    }
+	#btn{
+		width: 120px;
+		height: 50px;
+		font-size: 20px;
+		margin: 100px auto;
+	}
+	</style>
+	
+</head>
+<body>
+	<div id="di">
+		 <button id="btn">同意(10s)</button>
+	</div>
+</body>
+<script>
+		window.onload=function(){	
+		    document.getElementById('btn').disabled='disabled';		
+			var id=setInterval('a()',1000);
+		}
+        var count=10;
+		function a(){	
+		     if(count>1){
+			       btn=document.getElementById('btn');
+				   btn.innerHTML="同意("+--count+'s)'; 
+				   btn.disabled='disabled'; //禁用 
+		       }
+		    else{
+	            //clearInterval(id);
+			    btn.innerHTML="同意";
+			    btn.disabled=false;//解除禁用
+			    btn.onclick=function(){
+			       	alert('点击成功！');
+			       }
+			    }
+		    }
+		
+	</script>
+</html>
