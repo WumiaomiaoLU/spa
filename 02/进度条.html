@@ -1,28 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>年龄范围</title>
-	<style >
-	#di{margin-left: 100px;}
-	#ran{
-		width: 200px;
+	<title>进度条</title>
+	<style>
+	 
+	#len{
+	  width:300px; 
+	  height: 18px;	   
+      border:1px gray solid;    
+      position: relative;
+      top: -15px;
+      left: 100px;
+      background-color: gray;
+		}
+	.td{
+		border-right: 1px gray solid;
 	}
+  #fill{     
+     height:18px; 
+  }
 	</style>
 	<script>
-	window.onload=function(){
-	    var ran=document.getElementById('ran');
-		ran.onchange=function(){
-			var age=document.getElementById('age');	
-			age.innerHTML='你的年龄是:'+ran.value+'岁';
-			 
+		window.onload=function(){
+			var start=document.getElementById('start');
+			var stop=document.getElementById('stop');
+			var restart=document.getElementById('restart');
+			var len=document.getElementById('len');
+      var fill=document.getElementById('fill');
+      var count=1;
+			//开始
+      start.onclick=function(){
+        if (count==1) {
+          id=setInterval("a()",100);
+          console.log(id); 
+          count++;
+        }
+			}
+      //暂停   
+      stop.onclick=function(){
+          clearInterval(id);
+      }  
+      //重置 
+      restart.onclick=function(){
+         fill.style.width="0px";
+         count=1;
+         _width=0; //置0
+      }
 		}
-	}
+    var _width=0;
+    function a(){
+          var fill=document.getElementById('fill');
+          _width+=3;
+          fill.style.width=_width+'px';//注意格式
+          fill.style.backgroundColor='blue';
+          if(_width==300){
+              console.log(_width);
+              clearInterval(id);
+          }
+        }
 	</script>
 </head>
 <body>
-<div id="di">
-   年龄：<input  id="ran" type="range" min="0" max="100" value="0"/>
-   <div id="age">你的年龄是:0岁</div>
- </div>
+<span>下载进度：</span>
+    <div id="di"> 
+    	 <div id="len">
+         <div id="fill" style="width: 0px;"></div> 
+       </div>
+    </div>
+
+    <button id="start">开始</button>
+    <button id="stop">暂停</button>
+    <button id="restart">重置</button>
 </body>
 </html>
