@@ -9,44 +9,32 @@
  #rectangle__calc{
    margin-left:53px;
  }
- /*#s1{
-  color: red;
- }
- #s2{
-  color: red;
- }
- #s3{
-  color: red;
- }
- #s4{
-  color: red;
- }*/
 </style>
 <!-- 要求放到form表单里面 -->
 <!-- 按钮是submit类型 -->
 <body>
  <form>
-
+  
    <label for="">宽度：</label>   
-   <input id="rectangle__width" type="number" placeholder="请输入宽度"  min='0'  step="0.0001" />
+   <input id="rectangle__width" type="number" placeholder="请输入大于零的值"  min='0'  step="0.0001" required/>
+   <!-- <span id="wid" style="width: 00px;height: 20px;color: red"></span> -->
    <br>
-   <!-- <span id="s1"   style="display: none;">请输入宽</span>
-   <span id="s2"   style="display: none;">宽为数值类型</span> -->
    
    <label for="">长度：</label>
-   <input id="rectangle__height" type="number" placeholder="请输入高度" min='0'  step="0.0001">
+   <input id="rectangle__height" type="number" placeholder="请输入大于零的值" min='0'  step="0.0001" required>
+   <!-- <span id="hei" style="width: 00px;height: 20px;color: red"></span> -->
    <br>
-   <!-- <span id="s3"  style="display: none;">请输入高</span>
-   <span id="s4"  style="display: none;">高为数值类型</span> -->
-   <!-- <br> -->
-   <input id="rectangle__calc" type="button" value="计算">
+    
+
+   <input id="rectangle__calc" type="submit" value="计算">
    <br>
+
    <label for="">周长：</label>
    <input id="rectangle__perimeter" type="textbox">
    <br>
    <label for="">面积：</label>
    <input id="rectangle__area" type="textbox">
- </form>  
+  </form>
 </body>
 <script>
   var width=document.getElementById('rectangle__width');
@@ -54,11 +42,36 @@
   var down=document.getElementById('rectangle__calc');
   var perimter=document.getElementById('rectangle__perimeter');
   var area=document.getElementById('rectangle__area');
-  
+  width.focus();
   	//计算
 	  down.onclick=function(){ 
-	    perimter.value=width.value*2+height.value*2;
-      area.value=(width.value*10000*height.value*10000)/100000000; 
+      if (width.value&&height.value&&width.value>0&&height.value>0) {
+        // if (width.value>0&&height.value>0) {
+          perimter.value=width.value*2+height.value*2;
+          area.value=(width.value*10000*height.value*10000)/100000000;
+          // wid.innerHTML='';
+          // hei.innerHTML='';
+        }
+      //   if (width.value<=0) {
+      //     wid.innerHTML="请输入大于零的值";
+      //   }
+      //   if (height.value<=0) {
+      //     hei.innerHTML="请输入大于零的值";
+      //   }
+      // }
+	     // if (width.value&&!height.value) {
+      //   hei.innerHTML="请输入长度";
+      //   if (width.value<=0) {
+      //     wid.innerHTML="请输入大于零的值";
+      //   }
+      //  }
+
+      //  if (!width.value&&height.value) {
+      //   wid.innerHTML="请输入宽度";
+      //   if(height.value<=0){
+      //     hei.innerHTML="请输入大于零的值";
+      //   }
+      //  }
     }
 	   
 </script>

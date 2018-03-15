@@ -4,7 +4,7 @@
   <meta charset="UTF-8">  
   <title></title>
 </head>
-<title>字符级验证</title>
+<title>矩形周长面积计算</title>
 <style>
  #rectangle__calc{
    margin-left:53px;
@@ -12,25 +12,23 @@
 </style>
 
 <body>
- <body>
- <div class="rectangle">
+ <div>
    <label for="">宽度：</label>   
    <input id="rectangle__width" type="textbox">
    <span id="wid" style="width: 00px;height: 20px;color: red"></span>
    <br>
    <label for="">长度：</label>
    <input id="rectangle__height" type="textbox">
-   <span id="hei" style="width: 100px;height: 20px;color: red"></span>
+   <span id="hei" style="width: 00px;height: 20px;color: red"></span>
    <br>
    <input id="rectangle__calc" type="button" value="计算">
    <br>
    <label for="">周长：</label>
-   <input id="rectangle__perimeter" type="textbox" readonly="readonly">
+   <input id="rectangle__perimeter" type="textbox">
    <br>
    <label for="">面积：</label>
-   <input id="rectangle__area" type="textbox" readonly="readonly">
+   <input id="rectangle__area" type="textbox">
  </div>  
-</body>
 </body>
 <script>
   var width=document.getElementById('rectangle__width');
@@ -38,15 +36,13 @@
   var down=document.getElementById('rectangle__calc');
   var perimter=document.getElementById('rectangle__perimeter');
   var area=document.getElementById('rectangle__area');
- 
-  width.focus();
-  //var patrn=/^[0-9eE.]+$/;
+  window.o
+  //字符级验证
   //判断高
-
   	width.onkeydown=function(e){
-  		var patrn=/^[0-9eE.]+$/;
+  		var patrn=/^[0-9.Ee]$/;
         if (patrn.exec(e.key)||event.keyCode==8){  		 
-        console.log(e.key);
+        //console.log(e.key);
         return true;
         }else{
        	 return false;
@@ -55,9 +51,9 @@
     
   //判断宽
   	height.onkeydown=function(e){
-  		var patrn=/^[0-9eE.]+$/;
+  		var patrn=/^[0-9Ee.]$/;
         if (patrn.exec(e.key)||event.keyCode==8){  		 
-        console.log(e.key);
+        //console.log(e.key);
         return true;
         }else{
        	 return false;
@@ -65,12 +61,22 @@
   	}
   	//计算
 	  down.onclick=function(){
-	  	console.log('ff');
-      if(width.onkeydown()&&height.onkeydown()){  
-      	console.log('kkk');
-	    perimter.value=width.value*2+height.value*2;
-	    area.value=(width.value*10*height.value*10)/100; 
-     }
-	}
+       if(width.value&&height.value){
+    	    perimter.value=width.value*2+height.value*2;
+    	    area.value=(width.value*10*height.value*10)/100; 
+          wid.innerHTML='';
+          hei.innerHTML='';
+        }
+        if (width.value&&!height.value) {
+          hei.innerHTML='请输入';
+        }
+        if (!width.value&&height.value) {
+          wid.innerHTML='请输入';
+        }
+        if (!width.value&&!height.value) {
+          wid.innerHTML='请输入';
+          hei.innerHTML='请输入';
+        }
+	  }
 </script>
 </html>

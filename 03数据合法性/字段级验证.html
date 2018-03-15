@@ -46,25 +46,29 @@
   var area=document.getElementById('rectangle__area');
   var wid=document.getElementById('wid');
   var hei=document.getElementById('hei');
+
   width.focus();
-  
+  var patrn=/^[0-9.]+$/;
   //判断宽
   	width.onkeydown=function(){
-  		var patrn=/^[0-9.]+$/;
+  		
         if (event.keyCode==9){  		 
          if(!width.value){ 
             wid.innerHTML='请输入宽度！'; 
          } 
-         else if(!patrn.exec(width.value)) {
-            wid.innerHTML="请输入正确类型的值！" 
-            s2.style.display='block';  
+         if(!patrn.exec(width.value)) {
+            wid.innerHTML="请输入正确类型的值！"  
+            height.readonly="readonly";
          }   
+         if (width.value<=0) {
+          wid.innerHTML="请输入大于0的数！"
+          height.readonly="readonly";
+         }
         } 
   	}
     
   //判断高
   	height.onkeydown=function(){
-      var patrn=/^[0-9.]+$/;
         if (event.keyCode==9){       
          if(!height.value){ 
             hei.innerHTML="请输入高度！"; 
@@ -76,8 +80,41 @@
     }
   	//计算
 	  down.onclick=function(){ 
-	    perimter.value=width.value*2+height.value*2;
-      area.value=(width.value*10*height.value*10)/100; 
+      // 宽高都有数值
+      if (width.value&&height.value) {
+         if (width.value>0&&height.value>0) {
+          perimter.value=width.value*2+height.value*2;
+          area.value=(width.value*10000*height.value*10000)/100000000;
+          wid.innerHTML='';
+          hei.innerHTML='';
+        }
+        if (width.value<=0) {
+          wid.innerHTML="请输入大于零的值";
+        }
+        if (height.value<=0) {
+          hei.innerHTML="请输入大于零的值";
+        }
+      }
+       if (width.value&&!height.value) {
+        hei.innerHTML="请输入长度";
+        wid.innerHTML='';
+        if (width.value<=0) {
+          wid.innerHTML="请输入大于零的值";
+        }
+       }
+
+       if (!width.value&&height.value) {
+        wid.innerHTML="请输入宽度";
+        hei.innerHTML='';
+        if(height.value<=0){
+          hei.innerHTML="请输入大于零的值";
+        }
+       }
+
+       if (!width.value&&!height.value) {
+        wid.innerHTML='请输入！';
+        hei.innerHTML='请输入！';
+       }
 	  }
 </script>
 </html>
