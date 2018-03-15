@@ -55,10 +55,12 @@
         if (event.keyCode==9){  		 
          if(!width.value){ 
             wid.innerHTML='请输入宽度！'; 
+            return false;
          } 
          if(!patrn.exec(width.value)) {
             wid.innerHTML="请输入正确类型的值！"  
             height.readonly="readonly";
+            return false;
          }   
          if (width.value<=0) {
           wid.innerHTML="请输入大于0的数！"
@@ -72,9 +74,11 @@
         if (event.keyCode==9){       
          if(!height.value){ 
             hei.innerHTML="请输入高度！"; 
+            return false;
          } 
          else if(!patrn.exec(height.value)) {
             hei.innerHTML="请输入正确类型的值！"  
+            return false;
          }  
         } 
     }

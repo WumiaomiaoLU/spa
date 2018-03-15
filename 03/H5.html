@@ -49,6 +49,7 @@
         // if (width.value>0&&height.value>0) {
           perimter.value=width.value*2+height.value*2;
           area.value=(width.value*10000*height.value*10000)/100000000;
+          event.preventDefault();//防止提交时候页面刷新，input中无内容
           // wid.innerHTML='';
           // hei.innerHTML='';
         }
