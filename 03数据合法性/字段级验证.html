@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">  
+  <title></title>
+</head>
+<title>字段级验证</title>
+<style>
+ 
+ #rectangle__calc{
+   margin-left:53px;
+ }
+ #s1{
+  color: red;
+ }
+ #s2{
+  color: red;
+ }
+ #s3{
+  color: red;
+ }
+ #s4{
+  color: red;
+ }
+</style>
+
+<body>
+ <div>
+   <label for="">宽度：</label>   
+   <input id="rectangle__width" type="textbox">
+   <br>
+   <span id="s1"   style="display: none;">请输入宽</span>
+   <span id="s2"   style="display: none;">宽为数值类型</span>
+   <br>
+   <label for="">长度：</label>
+   <input id="rectangle__height" type="textbox">
+   <br>
+   <span id="s3"  style="display: none;">请输入高</span>
+   <span id="s4"  style="display: none;">高为数值类型</span>
+   <br>
+   <input id="rectangle__calc" type="button" value="计算">
+   <br>
+   <label for="">周长：</label>
+   <input id="rectangle__perimeter" type="textbox">
+   <br>
+   <label for="">面积：</label>
+   <input id="rectangle__area" type="textbox">
+ </div>  
+</body>
+<script>
+  var width=document.getElementById('rectangle__width');
+  var height=document.getElementById('rectangle__height');
+  var down=document.getElementById('rectangle__calc');
+  var perimter=document.getElementById('rectangle__perimeter');
+  var area=document.getElementById('rectangle__area');
+  var s1=document.getElementById('s1');
+  var s2=document.getElementById('s2');
+  var s3=document.getElementById('s3');
+  var s4=document.getElementById('s4');
+  //字符级验证
+  //判断宽
+  	width.onkeydown=function(){
+  		var patrn=/^[0-9.]+$/;
+        if (event.keyCode==9){  		 
+         if(!width.value){ 
+            s1.style.display='block'; 
+         } 
+         else if(!patrn.exec(width.value)) {
+            s1.style.display='none'; 
+            s2.style.display='block';  
+         }  
+         else if(patrn.exec(width.value)){
+          s1.style.display='none'; 
+          s2.style.display='none'; 
+         }  
+        } 
+  	}
+    
+  //判断高
+  	height.onkeydown=function(){
+      var patrn=/^[0-9.]+$/;
+        if (event.keyCode==9){       
+         if(!height.value){ 
+            s3.style.display='block'; 
+         } 
+         else if(!patrn.exec(height.value)) {
+            s3.style.display='none'; 
+            s4.style.display='block';  
+         }  
+         else if(patrn.exec(height.value)){
+          s3.style.display='none'; 
+          s4.style.display='none'; 
+         }  
+        } 
+    }
+  	//计算
+	  down.onclick=function(){ 
+	    perimter.value=width.value*2+height.value*2;
+      area.value=(width.value*10*height.value*10)/100; 
+	  }
+</script>
+</html>
