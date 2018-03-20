@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>公式</title>
+	<link rel="stylesheet" href="mathquill-0.10.1/mathquill.css"/>
+	<script src="highlight/jquery.js"></script>
+	<script src="mathquill-0.10.1/mathquill.js"></script>
+	
+</head>
+<body>
+   <p>输入公式: <span  style="width: 300px;height: 50px; line-height: 50px;" id="math-field"></span></p>
+   <!-- <p>LaTeX of what you typed: <span id="latex"></span></p> -->
+</body>
+<script>
+		var mathFieldSpan = document.getElementById('math-field');
+		var latexSpan = document.getElementById('latex');
+		var MQ = MathQuill.getInterface(2); // for backcompat
+		var mathField = MQ.MathField(mathFieldSpan, {
+		  spaceBehavesLikeTab: true, // configurable
+		  handlers: {
+		    edit: function() { // useful event handlers
+		      latexSpan.textContent = mathField.latex(); // simple API
+		    }
+		  }
+		});
+	</script>
+</html>

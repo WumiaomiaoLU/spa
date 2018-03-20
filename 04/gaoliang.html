@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>高亮</title>
+	<!-- 引入高亮样式 -->
+	<link rel="stylesheet" href="highlight/styles/railscasts.css">
+	<script src="highlight/jquery.js"></script>
+    <script src="highlight/highlight.pack.js"></script>
+
+    <style type="text/css">
+      .main{
+      	width: 350px;
+      }
+    </style>
+</head>
+<body>
+  <div class="main">
+   <textarea name="" cols="30" rows="5"  >var sayhi= 'long time no see!';</textarea>
+   <br>
+   <input type="button" value="添加代码">
+
+   <!-- 将要高亮的代码放到<pre><code></code></pre>中 -->
+   <!-- <div class="box">
+   	  <pre>
+   	   <code class="javascript hljs"> 
+   	      var a="hello";  	    
+       </code>
+      </pre>
+   </div> -->
+  </div>
+</body>
+<script type="text/javascript">
+	// $(document).ready(function() {
+	// 	console.log($('#t').html());
+ //      $('pre code').each(function(i, block) {
+ //       hljs.highlightBlock(block);
+ //      });
+ //    });
+    
+    $('input[type="button"]').click(function() {
+    var $code = $('<div><pre class="javascript"></pre></div>'),
+        $txt = $('textarea');
+    if($txt.val() !== '') {
+      $code.find('pre').html($txt.html());
+      // $code.find('pre').html($txt.val());
+      hljs.highlightBlock($code.find('pre').get(0));
+      $('.main').append($code);
+    }
+  });
+</script>
+</html>
