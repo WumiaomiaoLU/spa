@@ -27,23 +27,18 @@
 			var restart=document.getElementById('restart');
 			var len=document.getElementById('len');
       var fill=document.getElementById('fill');
-      var count=1;
 			//开始
       start.onclick=function(){
-        if (count==1) {
-          id=setInterval("a()",100);
-          console.log(id); 
-          count++;
-        }
+			   id=setInterval("a()",100);
+         console.log(id);			
 			}
       //暂停   
       stop.onclick=function(){
-          clearInterval(id);
+           clearInterval(id);
       }  
       //重置 
       restart.onclick=function(){
          fill.style.width="0px";
-         count=1;
          _width=0; //置0
       }
 		}
